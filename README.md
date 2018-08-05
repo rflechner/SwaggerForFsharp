@@ -2,6 +2,7 @@
 
 Swagger for F# project is destinated to produce libraries generating Swagger's documentation with REST frameworks like Giraffe and Suave.
 
+![myget](https://www.myget.org/BuildSource/Badge/romcyber?identifier=48c92492-d526-4a58-99b9-b512c55d7400)
 
 ## Swagger for Giraffe
 

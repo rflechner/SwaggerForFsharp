@@ -5,3 +5,4 @@ nuget Giraffe 1.1.0
 nuget Newtonsoft.Json 11.0.2
 nuget NSubstitute
 nuget xunit
+nuget xunit.runner.visualstudio

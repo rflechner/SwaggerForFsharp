@@ -1,9 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>net461;netcoreapp2.0</TargetFrameworks>
   </PropertyGroup>
   <ItemGroup>
+   <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
+    <PackageReference Include="xunit" Version="2.4.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+    <PackageReference Include="NSubstitute" Version="3.1.*" />
+    <PackageReference Include="FsCheck" Version="3.0.0-*" />
+    <PackageReference Include="FsCheck.Xunit" Version="3.0.0-*" />
     <ProjectReference Include="..\..\Giraffe.Swagger\Giraffe.Swagger.fsproj" />
     <DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="2.0.*" />
     <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.*" />

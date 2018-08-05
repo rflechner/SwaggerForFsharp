@@ -33,7 +33,11 @@ Target.create "Pack" (fun _ ->
   let nugetsDir = __SOURCE_DIRECTORY__ </> "releases"
   !! "src/SwaggerForFsharp.Giraffe/*.fsproj"
   |> Seq.iter (
-      DotNet.pack (fun settings -> { settings with OutputPath=Some nugetsDir })
+      DotNet.pack
+        <| fun settings -> 
+            { settings 
+                with OutputPath=Some nugetsDir
+            }
      )
 )
 

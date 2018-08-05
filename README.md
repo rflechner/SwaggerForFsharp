@@ -25,6 +25,183 @@ The good news is that we still have to declare our API routes the same way as be
 
 With that in place we can decouple the app declaration from the analysis required to generate the swagger documentation. In other words this solution has the avantage to avoid corrupting your service implementation.
 
+
+### Getting started
+
+#### Create the project
+
+You can create your project with following steps.
+
+```shell
+dotnet new console --lang F#
+dotnet add package SwaggerForFsharp.Giraffe --version 1.0.0-CI00004 --source https://www.myget.org/F/romcyber/api/v3/index.json
+```
+
+Open your `.fsproj` and edit your package references.
+
+You should have something like:
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FSharp.Core" Version="4.5.*" />
+    <PackageReference Include="Giraffe" Version="1.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.1.1" />
+    <PackageReference Include="SwaggerForFsharp.Giraffe" Version="1.0.0-CI00004" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.*" />
+    <PackageReference Include="TaskBuilder.fs" Version="2.0.0" />
+  </ItemGroup>
+
+</Project>
+```
+
+#### Code
+
+Edit `Program.fs`
+
+```FSharp
+module SwaggerGiraffeTesting.App
+
+
+open System
+open System.IO
+open Microsoft.AspNetCore
+open Microsoft.AspNetCore.Builder
+open Microsoft.AspNetCore.Hosting
+open Microsoft.AspNetCore.Http
+open Microsoft.AspNetCore.Authentication.Cookies
+open Microsoft.Extensions.Logging
+open Microsoft.Extensions.DependencyInjection
+open Giraffe
+open SwaggerForFsharp.Giraffe
+open SwaggerForFsharp.Giraffe.Common
+open SwaggerForFsharp.Giraffe.Generator
+open SwaggerForFsharp.Giraffe.Dsl
+
+let errorHandler (ex : Exception) (logger : ILogger) =
+    logger.LogError(EventId(), ex, "An unhandled exception has occurred while executing the request.")
+    clearResponse >=> setStatusCode 500 >=> text ex.Message
+let authScheme = CookieAuthenticationDefaults.AuthenticationScheme
+let time() = System.DateTime.Now.ToString()
+let bonjour (firstName, lastName) =
+    let message = sprintf "%s %s, vous avez le bonjour de Giraffe !" lastName firstName
+    text message
+
+let httpFailWith message =
+    setStatusCode 500 >=> text message
+
+let docAddendums =
+    fun (route:Analyzer.RouteInfos) (path:string,verb:HttpVerb,pathDef:PathDefinition) ->
+    
+        // routef params are automatically added to swagger, but you can customize their names like this 
+        let changeParamName oldName newName (parameters:ParamDefinition list) =
+            parameters |> Seq.find (fun p -> p.Name = oldName) |> fun p -> { p with Name = newName }
+    
+        match path,verb,pathDef with
+        | _,_, def when def.OperationId = "say_hello_in_french" ->
+            let firstname = def.Parameters |> changeParamName "arg0" "Firstname"
+            let lastname = def.Parameters |> changeParamName "arg1" "Lastname"
+            "/hello/{Firstname}/{Lastname}", verb, { def with Parameters = [firstname; lastname] }
+        | _ -> path,verb,pathDef
+let port = 5000
+
+let docsConfig c = 
+    let describeWith desc = 
+        { desc
+            with
+                Title="Sample 1"
+                Description="Create a swagger with Giraffe"
+                TermsOfService="Coucou"
+        } 
+    
+    { c with 
+        Description = describeWith
+        Host = sprintf "localhost:%d" port
+        DocumentationAddendums = docAddendums
+    }
+
+let webApp =
+    swaggerOf
+        ( choose [
+              GET >=>
+                 choose [
+                      route  "/"           >=> text "index" 
+                      route  "/ping"       >=> text "pong"
+                      // Swagger operation id can be defined like this or with DocumentationAddendums
+                      operationId "say_hello_in_french" ==> 
+                          routef "/hello/%s/%s" bonjour
+                 ]
+              RequestErrors.notFound (text "Not Found") ]
+       ) |> withConfig docsConfig
+
+// ---------------------------------
+// Main
+// ---------------------------------
+
+let cookieAuth (o : CookieAuthenticationOptions) =
+    do
+        o.Cookie.HttpOnly     <- true
+        o.Cookie.SecurePolicy <- CookieSecurePolicy.SameAsRequest
+        o.SlidingExpiration   <- true
+        o.ExpireTimeSpan      <- TimeSpan.FromDays 7.0
+
+let configureApp (app : IApplicationBuilder) =
+    
+    app.UseGiraffeErrorHandler(errorHandler)
+       .UseStaticFiles()
+       .UseAuthentication()
+       .UseGiraffe webApp
+
+let configureServices (services : IServiceCollection) =
+    services
+        .AddGiraffe()
+        .AddAuthentication(authScheme)
+        .AddCookie(cookieAuth)   |> ignore
+    services.AddDataProtection() |> ignore
+    
+let configureLogging (loggerBuilder : ILoggingBuilder) =
+    loggerBuilder.AddFilter(fun lvl -> lvl.Equals LogLevel.Error)
+                 .AddConsole()
+                 .AddDebug() |> ignore
+
+[<EntryPoint>]
+let main _ =
+    let contentRoot = Directory.GetCurrentDirectory()
+    let webRoot     = Path.Combine(contentRoot, "WebRoot")
+    let url = sprintf "http://+:%d" port
+    
+    WebHost.CreateDefaultBuilder()
+        .UseUrls(url)
+        .UseWebRoot(webRoot)
+        .Configure(Action<IApplicationBuilder> configureApp)
+        .ConfigureServices(configureServices)
+        .ConfigureLogging(configureLogging)
+        .Build()
+        .Run()
+    0
+```
+
+#### Build and run
+
+Run with
+
+```shell
+dotnet build
+dotnet run
+```
+
+Go to url http://localhost:5000/swaggerui/index.html
+
 ### How does it work ?
 
 I introduced the `documents` function that takes two arguments:

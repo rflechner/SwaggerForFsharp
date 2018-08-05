@@ -1,0 +1,5 @@
+xunit
+FsCheck.Xunit
+Newtonsoft.Json
+Giraffe
+NSubstitute

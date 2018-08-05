@@ -10,6 +10,14 @@
     <OutputType>Library</OutputType>
     <PackageId>SwaggerForFsharp.Giraffe</PackageId>
     <PackageTags>SwaggerForFsharp;Giraffe;Swagger;ASP.NET Core;FSharp;Functional;Http;Web;Framework;Micro;Service</PackageTags>
+    <Version>1.0.0-preview-1</Version>
+    <Authors>rflechner</Authors>
+    <Company />
+    <Copyright>2018</Copyright>
+    <PackageLicenseUrl>https://github.com/rflechner/SwaggerForFsharp/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/rflechner/SwaggerForFsharp</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/rflechner/SwaggerForFsharp.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Common.fs" />

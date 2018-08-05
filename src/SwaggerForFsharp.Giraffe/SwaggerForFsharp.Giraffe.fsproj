@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <AssemblyName>Giraffe.Swagger</AssemblyName>
+    <AssemblyName>SwaggerForFsharp.Giraffe</AssemblyName>
     <Description>Swagger generator for Giraffe Framework.</Description>
     <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
     <DebugType>portable</DebugType>
     <WarningsAsErrors>1</WarningsAsErrors>
     <Optimize>True</Optimize>
     <OutputType>Library</OutputType>
-    <PackageId>Giraffe.Swagger</PackageId>
-    <PackageTags>Giraffe;Swagger;ASP.NET Core;FSharp;Functional;Http;Web;Framework;Micro;Service</PackageTags>
+    <PackageId>SwaggerForFsharp.Giraffe</PackageId>
+    <PackageTags>SwaggerForFsharp;Giraffe;Swagger;ASP.NET Core;FSharp;Functional;Http;Web;Framework;Micro;Service</PackageTags>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Common.fs" />
@@ -21,5 +21,5 @@
   <ItemGroup>
     <EmbeddedResource Include="swagger-ui.zip" />
   </ItemGroup>
-  <Import Project="..\.paket\Paket.Restore.targets" />
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>

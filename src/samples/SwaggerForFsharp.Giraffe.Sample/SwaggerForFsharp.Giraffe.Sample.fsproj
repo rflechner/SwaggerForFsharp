@@ -15,10 +15,10 @@
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.*" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Giraffe.Swagger\Giraffe.Swagger.fsproj" />
+    <ProjectReference Include="..\..\SwaggerForFsharp.Giraffe\SwaggerForFsharp.Giraffe.fsproj" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.fs" />
   </ItemGroup>
-  <Import Project="..\..\.paket\Paket.Restore.targets" />
+  <Import Project="..\..\..\.paket\Paket.Restore.targets" />
 </Project>

@@ -37,9 +37,9 @@ I introduced `==>` operator that gives the possibility to add `decorations` in r
 
 There are 2 solutions to add documentation for a route.
 
-[See example](./src/samples/Giraffe.Swagger.Sample/Program.fs)
+[See example](./src/samples/SwaggerForFsharp.Giraffe.Sample/Program.fs)
 
-- [First one](./src/samples/Giraffe.Swagger.Sample/Program.fs#L183)
+- [First one](./src/samples/SwaggerForFsharp.Giraffe.Sample/Program.fs#L183)
 
 ```fsharp
 ...
@@ -50,7 +50,7 @@ operationId "send_a_car" ==>
 ...
 ```
 
-- [Second one](./src/samples/Giraffe.Swagger.Sample/Program.fs#L181)
+- [Second one](./src/samples/SwaggerForFsharp.Giraffe.Sample/Program.fs#L181)
 
 using `DocumentationAddendums`
 
@@ -98,7 +98,7 @@ I only implemented:
 - subRouteCi
 - subRoute
 
-You can build and run [SwaggerSample/Program.fs](./src/samples/Giraffe.Swagger.Sample/Program.fs) and 
+You can build and run [SwaggerSample/Program.fs](./src/samples/SwaggerForFsharp.Giraffe.Sample/Program.fs) and 
  go to http://localhost:5000/swaggerui/
 
 ![screen_giraffe_swagger1](images/screen1.gif)

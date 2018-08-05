@@ -1,10 +1,12 @@
-module Giraffe.SwaggerUi
+module SwaggerForFsharp.Giraffe.SwaggerUi
 
 open System
 open System.Collections.Generic
 open System.IO
 open System.IO.Compression
 open Microsoft.AspNetCore.Http
+open Giraffe
+open Giraffe.Routing
 
 let swaggerUiHandler (swaggerUiPath:string) swJsonPath =
   let handle (next : HttpFunc) (ctx : HttpContext) =

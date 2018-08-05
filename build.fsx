@@ -19,6 +19,11 @@ Target.create "Clean" (fun _ ->
   |> Shell.cleanDirs 
 )
 
+Target.create "Restore" (fun _ ->
+  !! "src/**/*.*proj"
+  |> Seq.iter (DotNet.restore id)
+)
+
 Target.create "Build" (fun _ ->
   !! "src/**/*.*proj"
   |> Seq.iter (DotNet.build id)
@@ -26,7 +31,7 @@ Target.create "Build" (fun _ ->
 
 Target.create "Pack" (fun _ ->
   let nugetsDir = __SOURCE_DIRECTORY__ </> "releases"
-  !! "src/Giraffe.Swagger/*.fsproj"
+  !! "src/SwaggerForFsharp.Giraffe/*.fsproj"
   |> Seq.iter (
       DotNet.pack (fun settings -> { settings with OutputPath=Some nugetsDir })
      )
@@ -35,6 +40,7 @@ Target.create "Pack" (fun _ ->
 Target.create "All" ignore
 
 "Clean"
+==> "Restore"
 ==> "Build"
 ==> "Pack"
 ==> "All"

@@ -1,8 +1,0 @@
-source https://www.nuget.org/api/v2
-nuget FsCheck.Xunit
-nuget FSharp.Quotations.Evaluator 1.1.2
-nuget Giraffe 1.1.0
-nuget Newtonsoft.Json 11.0.2
-nuget NSubstitute
-nuget xunit
-nuget xunit.runner.visualstudio

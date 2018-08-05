@@ -1,4 +1,4 @@
-module Giraffe.SwaggerTests
+module SwaggerForFsharp.Giraffe.Tests
 
 open System
 open System.Collections.Generic
@@ -10,12 +10,12 @@ open Microsoft.Extensions.Primitives
 open Xunit
 open Xunit.Abstractions
 open NSubstitute
+open SwaggerForFsharp.Giraffe
+open SwaggerForFsharp.Giraffe.Common
+open SwaggerForFsharp.Giraffe.Analyzer
+open SwaggerForFsharp.Giraffe.Generator
+open SwaggerForFsharp.Giraffe.Dsl
 open Giraffe
-open Giraffe.Swagger
-open Giraffe.Swagger.Common
-open Giraffe.Swagger.Analyzer
-open Giraffe.Swagger.Generator
-open Giraffe.Swagger.Dsl
 
 
 // ---------------------------------

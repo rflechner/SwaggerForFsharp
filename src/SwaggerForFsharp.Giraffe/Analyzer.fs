@@ -1,4 +1,4 @@
-namespace Giraffe.Swagger
+namespace SwaggerForFsharp.Giraffe
 
 open Giraffe
 open System

@@ -16,14 +16,14 @@ open Microsoft.Extensions.Configuration
 open Microsoft.Extensions.Logging
 open Microsoft.Extensions.DependencyInjection
 open Giraffe
-open Giraffe.Swagger
-open Giraffe.Swagger.Common
-open Giraffe.Swagger.Analyzer
-open Giraffe.Swagger.Generator
-open Giraffe.Swagger.Dsl
+open SwaggerForFsharp.Giraffe
+open SwaggerForFsharp.Giraffe.Common
+open SwaggerForFsharp.Giraffe.Analyzer
+open SwaggerForFsharp.Giraffe.Generator
+open SwaggerForFsharp.Giraffe.Dsl
 open Analyzer
-open SwaggerUi
-open Giraffe.Swagger.Generator
+open SwaggerForFsharp.Giraffe.SwaggerUi
+open SwaggerForFsharp.Giraffe.Generator
 open System.Diagnostics
 
 // ---------------------------------

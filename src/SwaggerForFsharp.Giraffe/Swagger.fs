@@ -1,4 +1,4 @@
-namespace Giraffe.Swagger
+namespace SwaggerForFsharp.Giraffe
 
 open System
 open System.Linq.Expressions
@@ -88,7 +88,7 @@ module Dsl =
           let swaggerJson = route config.SwaggerUrl >=> webPart
           choose [ 
                   swaggerJson
-                  Giraffe.SwaggerUi.swaggerUiHandler config.SwaggerUiUrl config.SwaggerUrl
+                  SwaggerForFsharp.Giraffe.SwaggerUi.swaggerUiHandler config.SwaggerUiUrl config.SwaggerUrl
                   app
             ]
       | other ->

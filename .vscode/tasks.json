@@ -23,7 +23,7 @@
       "args": [
         "run",
         "--project",
-        "src/samples/Giraffe.Swagger.Sample/Giraffe.Swagger.Sample.fsproj"
+        "src/samples/SwaggerForFsharp.Giraffe.Sample/SwaggerForFsharp.Giraffe.Sample.fsproj"
       ],
       "type": "shell",
       "group": "build",

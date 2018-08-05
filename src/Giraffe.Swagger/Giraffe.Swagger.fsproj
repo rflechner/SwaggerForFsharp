@@ -9,7 +9,7 @@
     <Optimize>True</Optimize>
     <OutputType>Library</OutputType>
     <PackageId>Giraffe.Swagger</PackageId>
-    <PackageTags>Giraffe;Swagger;ASP.NET Core;Lambda;FSharp;Functional;Http;Web;Framework;Micro;Service</PackageTags>
+    <PackageTags>Giraffe;Swagger;ASP.NET Core;FSharp;Functional;Http;Web;Framework;Micro;Service</PackageTags>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Common.fs" />

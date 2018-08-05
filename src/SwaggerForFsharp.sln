@@ -9,6 +9,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{D6CF39DF
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Giraffe.Swagger.Tests", "tests\Giraffe.Swagger.Tests\Giraffe.Swagger.Tests.fsproj", "{89744A82-D9A6-43AC-8F3C-DD356F33F467}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{A4358621-6DC9-4B93-9F18-04361F7451DC}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Giraffe.Swagger.Sample", "samples\Giraffe.Swagger.Sample\Giraffe.Swagger.Sample.fsproj", "{42014055-41DC-4144-B54B-034161D955E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,8 +50,21 @@ Global
 		{89744A82-D9A6-43AC-8F3C-DD356F33F467}.Release|x64.Build.0 = Release|Any CPU
 		{89744A82-D9A6-43AC-8F3C-DD356F33F467}.Release|x86.ActiveCfg = Release|Any CPU
 		{89744A82-D9A6-43AC-8F3C-DD356F33F467}.Release|x86.Build.0 = Release|Any CPU
+		{42014055-41DC-4144-B54B-034161D955E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42014055-41DC-4144-B54B-034161D955E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42014055-41DC-4144-B54B-034161D955E1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{42014055-41DC-4144-B54B-034161D955E1}.Debug|x64.Build.0 = Debug|Any CPU
+		{42014055-41DC-4144-B54B-034161D955E1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{42014055-41DC-4144-B54B-034161D955E1}.Debug|x86.Build.0 = Debug|Any CPU
+		{42014055-41DC-4144-B54B-034161D955E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42014055-41DC-4144-B54B-034161D955E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42014055-41DC-4144-B54B-034161D955E1}.Release|x64.ActiveCfg = Release|Any CPU
+		{42014055-41DC-4144-B54B-034161D955E1}.Release|x64.Build.0 = Release|Any CPU
+		{42014055-41DC-4144-B54B-034161D955E1}.Release|x86.ActiveCfg = Release|Any CPU
+		{42014055-41DC-4144-B54B-034161D955E1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{89744A82-D9A6-43AC-8F3C-DD356F33F467} = {D6CF39DF-6090-4778-B0A0-0C413F072F5E}
+		{42014055-41DC-4144-B54B-034161D955E1} = {A4358621-6DC9-4B93-9F18-04361F7451DC}
 	EndGlobalSection
 EndGlobal

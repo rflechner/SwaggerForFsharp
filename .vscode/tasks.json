@@ -1,0 +1,36 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "src/SwaggerForFsharp.sln"
+      ],
+      "type": "shell",
+      "group": "build",
+      "presentation": {
+        "reveal": "silent"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "run Giraffe sample",
+      "command": "dotnet",
+      "args": [
+        "run",
+        "--project",
+        "src/samples/Giraffe.Swagger.Sample/Giraffe.Swagger.Sample.fsproj"
+      ],
+      "type": "shell",
+      "group": "build",
+      "presentation": {
+        "reveal": "silent"
+      },
+      "problemMatcher": "$msCompile"
+    }
+  ]
+}

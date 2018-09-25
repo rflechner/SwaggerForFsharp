@@ -38,7 +38,7 @@ You can create your project with following steps.
 
 ```shell
 dotnet new console --lang F#
-dotnet add package SwaggerForFsharp.Giraffe --version 1.0.0-CI00004 --source https://www.myget.org/F/romcyber/api/v3/index.json
+dotnet add package SwaggerForFsharp.Giraffe --version 1.0.0-CI00006 --source https://www.myget.org/F/romcyber/api/v3/index.json
 ```
 
 Open your `.fsproj` and edit your package references.
